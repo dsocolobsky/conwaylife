@@ -1,3 +1,14 @@
+/************************************************************           
+    * Conway -- Conway's Game of life in Processing         *   
+    *                                                       *   
+    * Author:  Socolobsky, Dylan ("dysoco")                 *   
+    *                                                       *   
+    * Purpose:  Learning how to write Conway's Game of life *  
+    *                                                       *   
+    * Usage:                                                *   
+    *      Compile and run with Processing                  *   
+    ********************************************************/ 
+
 // 2D Array of objects
 Cell[][] grid;
 
@@ -77,6 +88,7 @@ void setup() {
   }
 }
 
+// TODO: Fix this, isn't precise
 boolean outOfLimits(int x, int y){
   if(x < 1 || y < 1 || x > 28 || y > 28)
     return true;
@@ -88,9 +100,11 @@ void draw() {
   delay(speed);
   background(0);
 
+  // Adds several random live cells
   for (int i = 0; i < cols * rows * density; i++){
     grid[(int)random(cols)][(int) random(rows)].alive = true;
   }
+
   // i = Columns, j = Rows  
   for (int i = 0; i < cols; i++) {
     for (int j = 0; j < rows; j++) {
